@@ -16,17 +16,41 @@ const firebaseConfig = {
   measurementId: "G-82CMDT3L8G"
 };
 
+const nameEl = document.getElementById("name-input")
+const passwordEl = document.getElementById("password-input")
+const loginContainer = document.querySelector(".login-container")
+
+const loginBtn = document.querySelector(".login")
+const createBtn = document.querySelector(".create")
+
+const name = nameEl.value 
+const password = passwordEl.value
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-
 const db = getFirestore();
 
+// user authentication or data creation 
+loginBtn.addEventListener("click", async () => {
+  const refToUserDoc = doc(db, "users", `${name}`);
+  const userSnap = await getDoc( refToUserDoc );
 
-const refToUserDoc = doc(db, "users", "deekshith");
-const userSnap = await getDoc( refToUserDoc );
+  if ( userSnap.exists() ) {
+    if( userSnap.data().password === `${password}`) {
+      console.log("Hey, you're in!")
+    }
+  } else {
+    showError();
+  }
 
-if ( userSnap.exists() ) {
-  console.log("Document data:", userSnap.data());
-} else {
-  console.log("No such document!");
+})
+
+function showError() {
+  const errorMessage = document.createElement("p");
+
+  errorMessage.textContent = "*An error occurred. Please make sure you entered the correct details."
+
+  errorMessage.classList.add(".error-message")
+
+  loginContainer.appendChild(errorMessage)
 }
