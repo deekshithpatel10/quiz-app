@@ -106,11 +106,13 @@ button:active {
    margin-top: 10px;
    align-self: center;
    font-size: 12px;
+   text-align: center;
 }
 
 .error-message {
-   margin-top: 5px;
+   margin-top: 2px;
    align-self: center;
    font-size: 12px;
    color: red;
+   text-align: center;
 }
