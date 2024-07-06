@@ -20,6 +20,4 @@ const app = initializeApp(firebaseConfig);
 
 console.log("Hello")
 
-if( analytics ) {
-  console.log(app)
-}
+console.log(app)
