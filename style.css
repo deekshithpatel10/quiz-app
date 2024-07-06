@@ -76,7 +76,7 @@ input {
    background-color: white;
    color: black;
    height: 40px;
-   width: 500px;
+   width: 90%;
    text-align: center;
    border-radius: 10px;
    font-size: 20px;
@@ -85,7 +85,7 @@ input {
 button {
    padding: 0px 5px;
    height: 35px;
-   width: 200px;
+   width: 30%;
    background-color: white;
    border-radius: 5px;
    border: 2px solid black;
