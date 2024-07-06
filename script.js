@@ -1,5 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js'
+import { getFirestore, collection, getDoc, doc, setDoc } from 'https://www.gstatic.com/firebasejs/10.12.3/firebase-firestore.js'
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -18,6 +19,14 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
-console.log("Hello")
+const db = getFirestore();
 
-console.log(app)
+
+const refToUserDoc = doc(db, "users", "deekshith");
+const userSnap = await getDoc( refToUserDoc );
+
+if ( userSnap.exists() ) {
+  console.log("Document data:", userSnap.data());
+} else {
+  console.log("No such document!");
+}
