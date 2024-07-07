@@ -13,6 +13,7 @@
    <!-- If user has already logged in, he has to log out before visiting login page-->
     <script>
       if( sessionStorage.getItem("ID") ) {
+         alert("Please log out first.")
          window.open("home-page/home.html", "_self")
       }
     </script>
