@@ -29,7 +29,8 @@ const db = getFirestore();
 
 // user authentication or data creation 
 loginBtn.addEventListener("click", async () => {
-  const name = nameEl.value 
+  //remove case-sensitivity by converting name to lowercase
+  const name = nameEl.value.toLowerCase()
   const password = passwordEl.value
 
   const refToUserDoc = doc(db, "users", `${name}`);
@@ -38,7 +39,7 @@ loginBtn.addEventListener("click", async () => {
   if ( userSnap.exists() ) {
     if( userSnap.data().password === `${password}`) {
       console.log("Hey, you're in!")
-      localStorage.setItem("ID", JSON.stringify(name))
+      sessionStorage.setItem("ID", JSON.stringify(name))
 
       window.open("home-page/home.html", "_self")
     } else {
@@ -52,7 +53,7 @@ loginBtn.addEventListener("click", async () => {
 })
 
 createBtn.addEventListener("click", async () => {
-  const name = nameEl.value
+  const name = nameEl.value.toLowerCase()
   const password = passwordEl.value
 
   const refToUserDoc = doc(db, "users", name);
@@ -66,7 +67,7 @@ createBtn.addEventListener("click", async () => {
       password: password
     });
 
-    localStorage.setItem("ID", JSON.stringify(name))
+    sessionStorage.setItem("ID", JSON.stringify(name))
     window.open("home-page/home.html", "_self")
   }
 
