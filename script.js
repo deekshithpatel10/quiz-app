@@ -18,7 +18,6 @@ const firebaseConfig = {
 
 const nameEl = document.getElementById("name-input")
 const passwordEl = document.getElementById("password-input")
-const loginContainer = document.querySelector(".login-container")
 
 const loginBtn = document.querySelector(".login")
 const createBtn = document.querySelector(".create")
@@ -39,6 +38,9 @@ loginBtn.addEventListener("click", async () => {
   if ( userSnap.exists() ) {
     if( userSnap.data().password === `${password}`) {
       console.log("Hey, you're in!")
+      localStorage.setItem("ID", JSON.stringify(name))
+
+      window.open("home-page/home.html", "_self")
     } else {
       showError();
     }
@@ -49,12 +51,39 @@ loginBtn.addEventListener("click", async () => {
 
 })
 
+createBtn.addEventListener("click", async () => {
+  const name = nameEl.value
+  const password = passwordEl.value
+
+  const refToUserDoc = doc(db, "users", name);
+  const userSnap = await getDoc( refToUserDoc );
+
+  if ( userSnap.exists() ) {
+    showIDExists()
+
+  } else {
+    await setDoc(doc(db, "users", name), {
+      password: password
+    });
+
+    localStorage.setItem("ID", JSON.stringify(name))
+    window.open("home-page/home.html", "_self")
+  }
+
+})
+
 function showError() {
-  const errorMessage = document.createElement("p");
+  const errorMessage = document.querySelector(".error")
 
   errorMessage.textContent = "*An error occurred. Please make sure you entered the correct details."
 
   errorMessage.classList.add("error-message")
+}
 
-  loginContainer.appendChild(errorMessage)
+function showIDExists() {
+  const errorMessage = document.querySelector(".error")
+
+  errorMessage.textContent = "*Given ID already exists. Please choose a different one."
+
+  errorMessage.classList.add("error-message")
 }

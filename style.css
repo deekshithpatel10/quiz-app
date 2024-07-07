@@ -102,7 +102,7 @@ button:active {
    color: white;
 }
 
-.login-container p {
+.login-container .info {
    margin-top: 10px;
    align-self: center;
    font-size: 12px;
