@@ -5,8 +5,17 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Home | Quizzer</title>
    <link rel="icon" href="../images/letter-q.png" type="image/icon type">
+   <link rel="stylesheet" href="style.css">
+   <script src="script.js" type="module"></script>
 </head>
 <body>
+   <script>
+      const ID = JSON.parse(sessionStorage.getItem("ID"))
+
+      if ( !ID ) {
+         window.open("../index.html", "_self")
+      }
+   </script>
    <h1>En bro samachara</h1>
    
 </body>
