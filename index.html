@@ -10,6 +10,13 @@
 </head>
 <body>
 
+   <!-- If user has already logged in, he has to log out before visiting login page-->
+    <script>
+      if( sessionStorage.getItem("ID") ) {
+         window.open("home-page/home.html", "_self")
+      }
+    </script>
+
    <div class="main">
       <div class="login-container">
 
