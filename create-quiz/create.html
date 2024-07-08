@@ -7,18 +7,47 @@
    <link rel="icon" href="../images/letter-q.png" type="image/icon type">
    <link rel="stylesheet" href="style.css">
    <script src="script.js" type="module" defer></script>
+
+   <!-- importing fonts-->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Margarine&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap" rel="stylesheet">
 </head>
 <body>
    <div class="header">
       <span class="title">Quizzer</span>
       <div class="header-right">
-         <span class="ID-el"><span>ID :</span>  </span>
+         <span class="ID-el">ID : <span></span></span>
          <button class="home-btn">Home</button>
       </div>
    </div>
 
    <div class="main">
-      
+      <div class="instructions"></div>
+
+      <div class="question">
+         <label for="question" id="question-label">Question:</label>
+         <textarea id="question-input" name="question" rows="5" cols="33"></textarea>
+         
+         <input type="text" id="one-input" placeholder="OPTION ONE">
+         <input type="text" id="two-input" placeholder="OPTION TWO">
+         <input type="text" id="three-input" placeholder="OPTION THREE">
+         <input type="text" id="four-input" placeholder="OPTION FOUR">
+         
+         <select class="correct-option">
+            <option value="" disabled selected hidden>Correct Option</option>
+            <option value="one">1</option>
+            <option value="two">2</option>
+            <option value="three">3</option>
+            <option value="four">4</option>
+         </select>
+      </div>
+
+      <div class="pallete"></div>
    </div>
 </body>
 </html>

@@ -18,11 +18,13 @@ body {
 .header-right {
    display: flex;
    flex-direction: column;
+   align-items: center;
    gap: 10px;
    color: #3751FE;
    font-family: "Margarine",'Open Sans', 'Helvetica Neue', sans-serif;
    font-weight: bold;
    font-size: 22px;
+   min-width: 10%;
 }
 
 .title {
@@ -37,7 +39,8 @@ body {
 }
 
 .logOut-btn {
-   width: 60%;
+   width: 100%;
+   max-width: 100px;
    align-self: center;
    padding: 5px 1px;
    font-family: Roboto, sans-serif;
@@ -94,7 +97,7 @@ body {
    border-radius: 15px;
    text-align: center;
    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-   font: bold;
+   font-weight: bold;
 
    overflow: auto;
    transition: 0.3s all;

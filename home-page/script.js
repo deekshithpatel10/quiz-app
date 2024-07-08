@@ -1,8 +1,7 @@
 const logOutBtn = document.querySelector(".logOut-btn")
-const IDelement = document.querySelector(".ID-el")
+const IDelement = document.querySelector(".ID-el span")
 
-const userName = JSON.parse(sessionStorage.getItem("ID"))
-
+const userName = JSON.parse( sessionStorage.getItem("ID") )
 IDelement.textContent += userName
 
 logOutBtn.addEventListener("click", () => {
