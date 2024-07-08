@@ -189,7 +189,7 @@ select {
 
 .message {
    margin: 2% 10% 1% 10%;
-   text-align: left;
+   text-align: center;
    color: red;
 }
 

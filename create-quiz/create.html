@@ -42,13 +42,13 @@
             navigating to them using the question-palete.<br><br> 
             If you make change a previously saved question, please save it again. 
             Don't forget to save the quiz at the end.<br>
-            <br>
+            <br>The quiz is set for 15 minutes by default.<br><br>
             Share your ID and the quiz name with your students.
          </p>
       </div>
 
       <div class="question">
-         <label for="question" id="question-label">Question:</label>
+         <label for="question-input" id="question-label">Question:</label>
          <textarea id="question-input" name="question" rows="5" cols="33"></textarea>
          
          <input type="text" id="one-input" placeholder="OPTION ONE">
@@ -56,12 +56,12 @@
          <input type="text" id="three-input" placeholder="OPTION THREE">
          <input type="text" id="four-input" placeholder="OPTION FOUR">
          
-         <select class="correct-option">
+         <select class="correct-option" name="correct-option">
             <option value="" disabled selected hidden>Correct Option</option>
-            <option value="one">1</option>
-            <option value="two">2</option>
-            <option value="three">3</option>
-            <option value="four">4</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
          </select>
 
          <div class="control-btns">
@@ -74,8 +74,8 @@
 
       <div class="pallete">
          <div class="quiz-name">
-            <label for="quiz-name">Quiz Name: </label>
-            <input type="text" name="quiz-name">
+            <label for="quiz-name-input">Quiz Name: </label>
+            <input type="text" id="quiz-name-input">
          </div>
          <div class="question-list-container">
             <div class="questions-list">
