@@ -18,6 +18,14 @@
    <link href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap" rel="stylesheet">
 </head>
 <body>
+   <script>
+      const ID = JSON.parse(sessionStorage.getItem("ID"))
+
+      if ( !ID ) {
+      window.open("../index.html", "_self")
+      }
+   </script>
+
    <div class="header">
       <span class="title">Quizzer</span>
       <div class="header-right">
@@ -27,7 +35,17 @@
    </div>
 
    <div class="main">
-      <div class="instructions"></div>
+      <div class="instructions">
+         <span class="heading">Instructions:</span>
+         <p class="info">Start adding questions using the input area. To add 
+            questions, save the current one. You can delete saved questions by
+            navigating to them using the question-palete.<br><br> 
+            If you make change a previously saved question, please save it again. 
+            Don't forget to save the quiz at the end.<br>
+            <br>
+            Share your ID and the quiz name with your students.
+         </p>
+      </div>
 
       <div class="question">
          <label for="question" id="question-label">Question:</label>
@@ -45,9 +63,30 @@
             <option value="three">3</option>
             <option value="four">4</option>
          </select>
+
+         <div class="control-btns">
+            <button class="delete-btn">DELETE</button>
+            <button class="save-btn">SAVE</button>
+         </div>
+
+         <p class="message"></p>
       </div>
 
-      <div class="pallete"></div>
+      <div class="pallete">
+         <div class="quiz-name">
+            <label for="quiz-name">Quiz Name: </label>
+            <input type="text" name="quiz-name">
+         </div>
+         <div class="question-list-container">
+            <div class="questions-list">
+
+            </div>
+         </div>
+         <div class="save-quiz">
+            <button class="save-quiz-btn">Save Quiz</button>
+            <p class="pallete-msg"></p>
+         </div>
+      </div>
    </div>
 </body>
 </html>
