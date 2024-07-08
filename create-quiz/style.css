@@ -1,0 +1,70 @@
+* {
+   margin: 0px;
+   padding: 0px;
+}
+
+body {
+   height: 100vh;
+}
+
+.header {
+   display: flex;
+   justify-content: space-between;
+   background-color: #e5e5e5;
+   padding: 20px 40px 20px 20px;
+   box-shadow: 0 -4px 8px white inset;
+}
+
+.header-right {
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
+   color: #3751FE;
+   font-family: "Margarine",'Open Sans', 'Helvetica Neue', sans-serif;
+   font-weight: bold;
+   font-size: 22px;
+}
+
+.title {
+   color: #3751FE;
+   font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+   font-weight: bold;
+   font-size: 40px;
+}
+
+.ID-el span {
+   color: red;
+}
+
+.home-btn {
+   width: 60%;
+   align-self: center;
+   padding: 5px 1px;
+   font-family: Roboto, sans-serif;
+   background-color: white;
+   border-radius: 5px;
+   border: 2px solid black;
+   transition: 0.3s all;
+   cursor: pointer;
+}
+
+.home-btn:hover {
+   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.home-btn:active {
+   background-color: grey;
+   color: white;
+}
+
+.main {
+   background-image: url("../images/school.png");
+   background-size: 600px 500px;
+   background-repeat: no-repeat;
+   background-position: center;
+   width: 100%;
+   height: calc(100% - (109px));
+   box-shadow: 0px 0px 15px white inset;
+   box-sizing: border-box;
+   padding: 30px 0px 0px 30px;
+}
