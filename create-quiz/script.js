@@ -170,9 +170,16 @@ saveQuizBtn.addEventListener("click", async () => {
    if ( numOfSavedQuestions && quizName ) {
       questionsArray.pop()
 
-      await setDoc( doc(db, "quizzes", `${userName}_${quizName}`), {
-         questions: questionsArray
-      })
+      let databaseDoc = {}
+      let questionIndex = 1
+
+      for ( let question in questionsArray ) {
+         databaseDoc[ `${questionIndex}` ] =  question
+
+         questionIndex++
+      }
+
+      await setDoc( doc(db, "quizzes", `${userName}_${quizName}`), databaseDoc)
 
       window.open("../home-page/home.html", "_self")
 
