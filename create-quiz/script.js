@@ -164,13 +164,13 @@ function removeQuestionFromArray() {
 }
 
 //save quiz 
-saveQuizBtn.addEventListener("click", () => {
+saveQuizBtn.addEventListener("click", async () => {
    const quizName = quizNameInput.value
 
    if ( numOfSavedQuestions && quizName ) {
       questionsArray.pop()
 
-      setDoc(db, "quizzes", `${userName}_${quizName}`, {
+      await setDoc( doc(db, "quizzes", `${userName}_${quizName}`), {
          questions: questionsArray
       })
 
