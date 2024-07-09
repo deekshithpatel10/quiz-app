@@ -165,7 +165,7 @@ function removeQuestionFromArray() {
 
 //save quiz 
 saveQuizBtn.addEventListener("click", async () => {
-   const quizName = quizNameInput.value
+   const quizName = quizNameInput.value.toLowerCase()
 
    if ( numOfSavedQuestions && quizName ) {
       questionsArray.pop()
@@ -174,7 +174,7 @@ saveQuizBtn.addEventListener("click", async () => {
       let questionIndex = 1
 
       for ( let question in questionsArray ) {
-         databaseDoc[ `${questionIndex}` ] =  question
+         databaseDoc[ `${questionIndex}` ] = questionsArray[ questionIndex - 1 ]
 
          questionIndex++
       }
