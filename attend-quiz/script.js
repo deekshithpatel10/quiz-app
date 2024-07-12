@@ -43,17 +43,19 @@ const quizDetailsDiv = document.querySelector(".quiz-details")
 const questionsListDiv = document.querySelector(".questions-list")
 
 const questionPara = document.createElement("p")
-const optionOneBtn = createRadioButton( "1" )
-const optionTwoBtn = createRadioButton( "2" )
-const optionThreeBtn = createRadioButton( "3" )
-const optionFourBtn = createRadioButton( "4" )
+const optionOneBtn = createRadioInput( "1" )
+const optionTwoBtn = createRadioInput( "2" )
+const optionThreeBtn = createRadioInput( "3" )
+const optionFourBtn = createRadioInput( "4" )
 
-function createRadioButton( value ) {
-  const button = document.createElement("button")
+function createRadioInput( value ) {
+  const button = document.createElement("input")
   button.setAttribute("type", "radio")
   button.setAttribute("name", "option")
   button.setAttribute("id", value)
   button.setAttribute("value", value)
+
+  return button
 }
 
 loadQuizBtn.addEventListener("click", async () => {
@@ -125,6 +127,9 @@ function updateQuizDetailsDiv() {
 function loadQuestion( clickedBtn ) {
   const questionNumber = Number( clickedBtn.textContent )
 
+  for( let button of allQuestionButtons ) {
+    button.removeAttribute("id")
+  }
   clickedBtn.id = "selected-question"
   const question = quizDoc[ questionNumber - 1 ][1]
 
