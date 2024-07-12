@@ -1,0 +1,302 @@
+* {
+   margin: 0px;
+   padding: 0px;
+}
+
+body {
+   height: 100vh;
+}
+
+.header {
+   display: flex;
+   justify-content: space-between;
+   background-color: #e5e5e5;
+   padding: 20px 40px 20px 20px;
+   box-shadow: 0 -4px 8px white inset;
+}
+
+.header-right {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 10px;
+   color: #3751FE;
+   font-family: "Margarine",'Open Sans', 'Helvetica Neue', sans-serif;
+   font-weight: bold;
+   font-size: 22px;
+   min-width: 10%;
+}
+
+.title {
+   color: #3751FE;
+   font-family: Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+   font-weight: bold;
+   font-size: 40px;
+}
+
+.ID-el span {
+   color: red;
+}
+
+.home-btn {
+   width: 100%;
+   max-width: 100px;
+   align-self: center;
+   padding: 5px 1px;
+   font-family: Roboto, sans-serif;
+   background-color: white;
+   border-radius: 5px;
+   border: 2px solid black;
+   transition: 0.3s all;
+   cursor: pointer;
+}
+
+.home-btn:hover {
+   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.home-btn:active {
+   background-color: grey;
+   color: white;
+}
+
+.main {
+   background-image: url("../images/school.png");
+   background-size: 600px 500px;
+   background-repeat: no-repeat;
+   background-position: center;
+   width: 100%;
+   height: calc(100% - (109px));
+   box-shadow: 0px 0px 15px white inset;
+   box-sizing: border-box;
+
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   gap:3%;
+}
+
+.instructions, .question, .pallete {
+   background-color: white;
+   border: 2px solid black;
+   border-radius: 10px;
+   opacity: 0.95;
+   height: 80%;
+   overflow: auto;
+   box-sizing: border-box;
+   padding-top: 1%;
+}
+
+.instructions {
+   width: 26%;
+   overflow: auto;
+}
+
+.question {
+   display: flex;
+   flex-direction: column;
+   justify-content: flex-start;
+   align-items: center;
+   width: 34%;
+   overflow: auto;
+}
+
+.pallete {
+   width: 28%;
+   overflow: auto;
+   display: flex;
+   flex-direction: column;
+}
+
+.quiz-details {
+   width: 80%;
+   height: 84%;
+   overflow: auto;
+   min-height: 84%;
+}
+
+#tutor-name-input, #quiz-name-input {
+   box-sizing: border-box;
+   border: 2px solid rgb(235, 110, 110);
+   border-radius: 10px;
+   font-weight: bold;
+   padding: 3%;
+   display: inline;
+   width:80%;
+   height: 10%;
+   margin-top: 1%;
+   margin-bottom: 3%;
+}
+
+#tutor-name-label, #quiz-name-label {
+   box-sizing: border-box;
+   padding-bottom: 1%;
+   height: 6%;
+   font-size: 20px;
+   font-family: "Sriracha", cursive;
+   font-weight: bold;
+   display: flex;
+   align-items: center;
+   white-space: nowrap;
+}
+
+.question-buttons {
+   width: 100%;
+   text-align: center;
+}
+
+
+.control-btns {
+   display: flex;
+   justify-content: space-evenly;
+   width: 100%;
+   height: 7%;
+}
+
+.delete-btn, .save-btn {
+   height: 100%;
+   overflow: hidden;
+   font-family: "Margarine", sans-serif;
+   cursor: pointer;
+   border: 2px solid black;
+   border-radius: 5px;
+   font-weight: bold;
+   transition: 0.2s all;
+}
+
+.delete-btn {
+   width: 30%;
+   background-color: rgb(220, 118, 118);
+}
+
+.save-btn {
+   width: 20%;
+   background-color: rgb(118, 226, 118);
+}
+
+.message {
+   margin: 0% 10% 1% 10%;
+   text-align: center;
+   color: red;
+}
+
+.delete-btn:hover {
+   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 12px -8px;
+}
+
+.save-btn:hover {
+   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 12px -8px;
+}
+
+.delete-btn:active {
+   background-color: red;
+}
+
+.save-btn:active {
+   background-color: green;
+}
+
+.instructions .heading {
+   font-size: 20px;
+   font-family: "Sriracha", cursive;
+   font-weight: bold;
+   margin-left: 10%;
+   height: 5%;
+   display: flex;
+   align-items: center;
+}
+
+.instructions .info {
+   margin: 2% 10% 10% 10%;
+   font-family: Roboto, sans-serif;
+   text-align: left;
+   font-weight: 500;
+}
+
+.quiz-name, .questions-list, .submit-quiz {
+   margin-left: 10%;
+   margin-right: 10%;
+   box-sizing: border-box;
+   width: 80%;
+   overflow: auto;
+}
+
+.quiz-name {
+   height: 20%;
+}
+
+.quiz-name span {
+   height: 25%;
+   font-size: 20px;
+   font-family: "Sriracha", cursive;
+   font-weight: bold;
+   margin: 0px auto;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+
+.questions-list {
+   box-sizing: border-box;
+   display: flex;
+   max-height: 100%;
+   flex-wrap: wrap;
+   column-gap: 10%;
+   align-items: center;
+   row-gap: 10px;
+   justify-content: center;
+}
+
+.questions-list button {
+   height: 40px;
+   width: 40px;
+   border-radius: 5px;
+   background-color: rgb(118, 226, 118);
+   border: 1px solid black;
+}
+
+.questions-list button:hover {
+   box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+
+#selected-question {
+   background-color: green;
+}
+
+.question-list-container {
+   height: 64%;
+}
+
+.submit-quiz {
+   align-self: center;
+   text-align: center;
+}
+
+.submit-quiz-btn, .load-quiz-btn {
+   margin-bottom: 10px;
+   width: 40%;
+   overflow: hidden;
+   height: 30px;
+   font-family: "Margarine", sans-serif;
+   cursor: pointer;
+   border: 2px solid black;
+   border-radius: 5px;
+   font-weight: bold;
+   background-color: rgb(118, 226, 118);
+   transition: 0.2s all;
+}
+
+.submit-quiz-btn:hover, .load-quiz-btn:hover {
+   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 12px -8px;
+}
+
+.submit-quiz-btn:active, .load-quiz-btn:active {
+   background-color: green;
+}
+
+.pallete-msg {
+   margin-bottom: 4%;
+   color: red;
+}
+

@@ -16,7 +16,7 @@ const responsesDiv = document.querySelector(".responses-div")
 const resultsDiv = document.querySelector(".results-div")
 
 attendQuizDiv.addEventListener("click", () => {
-   console.log("attend a quiz")
+   window.open("../attend-quiz/attend.html", "_self")
 })
 
 createQuizDiv.addEventListener("click", () => {

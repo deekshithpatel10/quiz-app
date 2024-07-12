@@ -180,7 +180,7 @@ saveQuizBtn.addEventListener("click", async () => {
       }
 
       await setDoc( doc(db, "quizzes", `${userName}_${quizName}`), databaseDoc)
-
+      quizNameInput.value = ""
       window.open("../home-page/home.html", "_self")
 
    } else if ( numOfSavedQuestions ) {

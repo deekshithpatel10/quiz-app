@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Attend Quiz | Quizzer</title>
+   <link rel="icon" href="../images/letter-q.png" type="image/icon type">
+   <link rel="stylesheet" href="style.css">
+   <script src="script.js" type="module" defer></script>
+
+   <!-- importing fonts-->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Margarine&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap" rel="stylesheet">
+</head>
+<body>
+   <script>
+      //const ID = JSON.parse(sessionStorage.getItem("ID"))
+
+      //if ( !ID ) {
+      //window.open("../index.html", "_self")
+      //}
+   </script>
+
+   <div class="header">
+      <span class="title">Quizzer</span>
+      <div class="header-right">
+         <span class="ID-el">ID : <span></span></span>
+         <button class="home-btn">Home</button>
+      </div>
+   </div>
+
+   <div class="main">
+      <div class="instructions">
+         <span class="heading">Instructions:</span>
+         <p class="info">
+            Use the provided buttons to navigate the quiz. You can directly skip 
+            to a question using the question pallete.<br><br>
+            Please use the submit button to finish the quiz.The quiz will 
+            auto submit once the timer ends.If you exit the page or go back, the quiz will 
+            auto submit.
+         </p>
+      </div>
+
+      <div class="question">
+         <div class="quiz-details">
+            <label for="tutor-name-input" id="tutor-name-label">Tutor name: </label>
+            <input type="text" id="tutor-name-input" >
+            <label for="quiz-name-input" id="quiz-name-label">Quiz name input: </label>
+            <input type="text" id="quiz-name-input">
+         </div>
+         <div class="question-buttons">
+            <button class="load-quiz-btn">Load Quiz</button>
+         </div>
+         
+         <p class="message"></p>
+      </div>
+
+      <div class="pallete">
+         <div class="quiz-name">
+            <span class="question-pallete">Question Pallete</span>
+         </div>
+         <div class="question-list-container">
+            <div class="questions-list"></div>
+         </div>
+         <div class="submit-quiz">
+            <button class="submit-quiz-btn">Submit</button>
+            <p class="pallete-msg"></p>
+         </div>
+      </div>
+   </div>
+</body>
+</html>
