@@ -34,11 +34,27 @@ homeBtn.addEventListener("click", () => {
 //page logic begins here
 let quizDoc
 let quizResponse = []
+let allQuestionButtons 
 const tutorNameInput = document.getElementById("tutor-name-input")
 const quizNameInput = document.getElementById("quiz-name-input")
 const loadQuizBtn = document.querySelector(".load-quiz-btn")
 
 const quizDetailsDiv = document.querySelector(".quiz-details")
+const questionsListDiv = document.querySelector(".questions-list")
+
+const questionPara = document.createElement("p")
+const optionOneBtn = createRadioButton( "1" )
+const optionTwoBtn = createRadioButton( "2" )
+const optionThreeBtn = createRadioButton( "3" )
+const optionFourBtn = createRadioButton( "4" )
+
+function createRadioButton( value ) {
+  const button = document.createElement("button")
+  button.setAttribute("type", "radio")
+  button.setAttribute("name", "option")
+  button.setAttribute("id", value)
+  button.setAttribute("value", value)
+}
 
 loadQuizBtn.addEventListener("click", async () => {
   const tutorName = tutorNameInput.value.toLowerCase()
@@ -51,7 +67,7 @@ loadQuizBtn.addEventListener("click", async () => {
 
     if ( quizSnap.exists() ) {
       console.log("Document data:", quizSnap.data());
-      quizDoc = quizSnap.data()
+      quizDoc = Object.entries( quizSnap.data() )
       loadQuiz()
 
     } else {
@@ -79,11 +95,9 @@ function clearQuizDetailsDiv() {
 }
 
 function updatePallete() {
-  const questionsListDiv = document.querySelector(".questions-list")
-
   let questionNumber = 1
 
-  for( let question in QuizDoc ) {
+  for( let question in quizDoc ) {
     const button = document.createElement("button")
     button.textContent = questionNumber
 
@@ -94,13 +108,31 @@ function updatePallete() {
     questionsListDiv.appendChild( button )
     questionNumber++
   }
+
+  allQuestionButtons = questionsListDiv.children
 }
 
 function updateQuizDetailsDiv() {
-  const numOfQuestions = quizDoc.length()
+  quizDetailsDiv.appendChild( questionPara )
+  quizDetailsDiv.appendChild( optionOneBtn )
+  quizDetailsDiv.appendChild( optionTwoBtn )
+  quizDetailsDiv.appendChild( optionThreeBtn )
+  quizDetailsDiv.appendChild( optionFourBtn )
+
+  loadQuestion( allQuestionButtons[0] )
 }
 
 function loadQuestion( clickedBtn ) {
+  const questionNumber = Number( clickedBtn.textContent )
+
+  clickedBtn.id = "selected-question"
+  const question = quizDoc[ questionNumber - 1 ][1]
+
+  questionPara.textContent = question[0]
+  optionOneBtn.textContent = question[1]
+  optionTwoBtn.textContent = question[2]
+  optionThreeBtn.textContent = question[3]
+  optionFourBtn.textContent = question[4]
 
 }
 

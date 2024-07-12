@@ -254,6 +254,7 @@ body {
    border-radius: 5px;
    background-color: rgb(118, 226, 118);
    border: 1px solid black;
+   cursor: pointer;
 }
 
 .questions-list button:hover {
