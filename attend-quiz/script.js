@@ -32,9 +32,13 @@ homeBtn.addEventListener("click", () => {
 })
 
 //page logic begins here
+let quizDoc
+let quizResponse = []
 const tutorNameInput = document.getElementById("tutor-name-input")
 const quizNameInput = document.getElementById("quiz-name-input")
 const loadQuizBtn = document.querySelector(".load-quiz-btn")
+
+const quizDetailsDiv = document.querySelector(".quiz-details")
 
 loadQuizBtn.addEventListener("click", async () => {
   const tutorName = tutorNameInput.value.toLowerCase()
@@ -47,6 +51,8 @@ loadQuizBtn.addEventListener("click", async () => {
 
     if ( quizSnap.exists() ) {
       console.log("Document data:", quizSnap.data());
+      quizDoc = quizSnap.data()
+      loadQuiz()
 
     } else {
       const message = "*Quiz doesn't exist."
@@ -62,7 +68,41 @@ loadQuizBtn.addEventListener("click", async () => {
   }
 })
 
+function loadQuiz() {
+  clearQuizDetailsDiv()
+  updatePallete()
+  updateQuizDetailsDiv()
+}
 
+function clearQuizDetailsDiv() {
+  quizDetailsDiv.textContent = ""
+}
+
+function updatePallete() {
+  const questionsListDiv = document.querySelector(".questions-list")
+
+  let questionNumber = 1
+
+  for( let question in QuizDoc ) {
+    const button = document.createElement("button")
+    button.textContent = questionNumber
+
+    button.addEventListener("click", () => {
+      loadQuestion( button )
+    })
+
+    questionsListDiv.appendChild( button )
+    questionNumber++
+  }
+}
+
+function updateQuizDetailsDiv() {
+  const numOfQuestions = quizDoc.length()
+}
+
+function loadQuestion( clickedBtn ) {
+
+}
 
 
 
