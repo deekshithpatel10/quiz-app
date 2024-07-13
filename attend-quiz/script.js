@@ -179,13 +179,7 @@ function loadQuestion( clickedBtn ) {
   optionThreeLabel.textContent = question[3]
   optionFourLabel.textContent = question[4]
 
-  const optionIsChosen = saveAnswer( currentQuestion )
-  if( optionIsChosen ) {
-    clickedBtn.classList.add("answer-chosen")
-  } else {
-    clickedBtn.classList.remove("answer-chosen")
-  }
-
+  saveAnswer( currentQuestion )
   updateCheckbox( questionNumber )
   currentQuestion = questionNumber
 }
@@ -207,7 +201,11 @@ function saveAnswer( currentQuestion ) {
 
   quizResponse[ currentQuestion - 1 ] = chosenAnswer
 
-  return chosenAnswer
+  if( chosenAnswer ) {
+    allQuestionButtons[ currentQuestion - 1 ].classList.add("answer-chosen")
+  } else {
+    allQuestionButtons[ currentQuestion - 1 ].classList.remove("answer-chosen")
+  }
 }
 
 

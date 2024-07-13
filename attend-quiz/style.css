@@ -319,7 +319,7 @@ body {
    font-family: Roboto, sans-serif;
 }
 
-.answer-chosen {
+.question-list-container .question-list .answer-chosen {
    background-color: green;
 }
 
