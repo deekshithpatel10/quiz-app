@@ -49,22 +49,22 @@ const content = `<div class="question-para">
 </div>
 
 <div class="option">
-  <input type="radio" name="option" id="option-one">
+  <input type="checkbox" name="option" id="option-one">
   <label for="option-one" id="option-one-label"></label>
 </div>
             
 <div class="option">
-  <input type="radio" name="option" id="option-two">
+  <input type="checkbox" name="option" id="option-two">
   <label for="option-two" id="option-two-label"></label>
 </div>
 
 <div class="option">
-  <input type="radio" name="option" id="option-three">
+  <input type="checkbox" name="option" id="option-three">
   <label for="option-three" id="option-three-label"></label>
 </div>
 
 <div class="option">
-  <input type="radio" name="option" id="option-four">
+  <input type="checkbox" name="option" id="option-four">
   <label for="option-four" id="option-four-label"></label>
 </div>`
 

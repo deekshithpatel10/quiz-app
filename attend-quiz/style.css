@@ -145,7 +145,6 @@ body {
    text-align: center;
 }
 
-
 .control-btns {
    display: flex;
    justify-content: space-evenly;
@@ -252,7 +251,7 @@ body {
    height: 40px;
    width: 40px;
    border-radius: 5px;
-   background-color: rgb(228, 228, 129);
+   background-color: lightblue;
    border: 1px solid black;
    cursor: pointer;
 }
