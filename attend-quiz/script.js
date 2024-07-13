@@ -42,21 +42,46 @@ const loadQuizBtn = document.querySelector(".load-quiz-btn")
 const quizDetailsDiv = document.querySelector(".quiz-details")
 const questionsListDiv = document.querySelector(".questions-list")
 
-const questionPara = document.createElement("p")
-const optionOneBtn = createRadioInput( "1" )
-const optionTwoBtn = createRadioInput( "2" )
-const optionThreeBtn = createRadioInput( "3" )
-const optionFourBtn = createRadioInput( "4" )
+//div content to be inserted to load quiz
+const content = `<div class="question-para">
+  <p id="question-number"></p>
+  <p id="question-text"></p>
+</div>
 
-function createRadioInput( value ) {
-  const button = document.createElement("input")
-  button.setAttribute("type", "radio")
-  button.setAttribute("name", "option")
-  button.setAttribute("id", value)
-  button.setAttribute("value", value)
+<div class="option">
+  <input type="radio" name="option" id="option-one">
+  <label for="option-one" id="option-one-label"></label>
+</div>
+            
+<div class="option">
+  <input type="radio" name="option" id="option-two">
+  <label for="option-two" id="option-two-label"></label>
+</div>
 
-  return button
-}
+<div class="option">
+  <input type="radio" name="option" id="option-three">
+  <label for="option-three" id="option-three-label"></label>
+</div>
+
+<div class="option">
+  <input type="radio" name="option" id="option-four">
+  <label for="option-four" id="option-four-label"></label>
+</div>`
+
+const questionNumberDiv = document.getElementById("question-number")
+const questionText = document.getElementById("question-text")
+
+const optionOneBtn = document.getElementById("option-one")
+const optionOneLabel = document.getElementById("option-one-label")
+
+const optionTwoBtn = document.getElementById("option-two")
+const optionTwoLabel = document.getElementById("option-two-label")
+
+const optionThreeBtn = document.getElementById("option-three")
+const optionThreeLabel = document.getElementById("option-three-label")
+
+const optionFourBtn = document.getElementById("option-four")
+const optionFourLabel = document.getElementById("option-four-label")
 
 loadQuizBtn.addEventListener("click", async () => {
   const tutorName = tutorNameInput.value.toLowerCase()
@@ -97,9 +122,8 @@ function clearQuizDetailsDiv() {
 }
 
 function updatePallete() {
-  let questionNumber = 1
 
-  for( let question in quizDoc ) {
+  for( let questionNumber = 1; questionNumber <= quizDoc.length; questionNumber++ ) {
     const button = document.createElement("button")
     button.textContent = questionNumber
 
@@ -108,18 +132,13 @@ function updatePallete() {
     })
 
     questionsListDiv.appendChild( button )
-    questionNumber++
   }
 
   allQuestionButtons = questionsListDiv.children
 }
 
 function updateQuizDetailsDiv() {
-  quizDetailsDiv.appendChild( questionPara )
-  quizDetailsDiv.appendChild( optionOneBtn )
-  quizDetailsDiv.appendChild( optionTwoBtn )
-  quizDetailsDiv.appendChild( optionThreeBtn )
-  quizDetailsDiv.appendChild( optionFourBtn )
+  quizDetailsDiv.textContent = content
 
   loadQuestion( allQuestionButtons[0] )
 }
@@ -131,14 +150,15 @@ function loadQuestion( clickedBtn ) {
     button.removeAttribute("id")
   }
   clickedBtn.id = "selected-question"
+
   const question = quizDoc[ questionNumber - 1 ][1]
 
-  questionPara.textContent = question[0]
-  optionOneBtn.textContent = question[1]
-  optionTwoBtn.textContent = question[2]
-  optionThreeBtn.textContent = question[3]
-  optionFourBtn.textContent = question[4]
-
+  questionNumberDiv.textContent = `${questionNumber}. `
+  questionText.textContent = question[0]
+  optionOneLabel.textContent = question[1]
+  optionTwoLabel.textContent = question[2]
+  optionThreeLabel.textContent = question[3]
+  optionFourLabel.textContent = question[4]
 }
 
 

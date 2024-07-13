@@ -301,3 +301,22 @@ body {
    color: red;
 }
 
+/*appending after the quiz loads*/
+.question-para {
+   display: flex;
+   gap:5px;
+   margin-bottom: 20px;
+}
+.question-para p {
+   font-weight: bold;
+   font-family: Roboto, sans-serif;
+}
+
+.option {
+   display: flex;
+   gap: 10px;
+   margin-bottom: 10px;
+   font-weight: bold;
+   font-family: Roboto, sans-serif;
+}
+
