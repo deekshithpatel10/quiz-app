@@ -138,7 +138,7 @@ function updatePallete() {
 }
 
 function updateQuizDetailsDiv() {
-  quizDetailsDiv.textContent = content
+  quizDetailsDiv.innerHTML = content
 
   loadQuestion( allQuestionButtons[0] )
 }
