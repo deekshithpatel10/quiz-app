@@ -179,7 +179,13 @@ function loadQuestion( clickedBtn ) {
   optionThreeLabel.textContent = question[3]
   optionFourLabel.textContent = question[4]
 
-  saveAnswer( currentQuestion )
+  const optionIsChosen = saveAnswer( currentQuestion )
+  if( optionIsChosen ) {
+    clickedBtn.classList.add("answer-chosen")
+  } else {
+    clickedBtn.classList.remove("answer-chosen")
+  }
+
   updateCheckbox( questionNumber )
   currentQuestion = questionNumber
 }
@@ -200,7 +206,25 @@ function saveAnswer( currentQuestion ) {
   }
 
   quizResponse[ currentQuestion - 1 ] = chosenAnswer
+
+  return chosenAnswer
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function updateCheckbox( nextQuestionNumber ) {
   switch( quizResponse[ nextQuestionNumber - 1] ) {
@@ -236,16 +260,6 @@ function updateCheckbox( nextQuestionNumber ) {
       break
   }
 }
-
-
-
-
-
-
-
-
-
-
 
 function showErrorMessage( message, errorMessageElement ) {
 
