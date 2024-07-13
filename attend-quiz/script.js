@@ -34,6 +34,7 @@ homeBtn.addEventListener("click", () => {
 //page logic begins here
 let quizDoc
 let quizResponse = []
+let currentQuestion = 1
 let allQuestionButtons 
 const tutorNameInput = document.getElementById("tutor-name-input")
 const quizNameInput = document.getElementById("quiz-name-input")
@@ -68,20 +69,20 @@ const content = `<div class="question-para">
   <label for="option-four" id="option-four-label"></label>
 </div>`
 
-let questionNumberDiv = document.getElementById("question-number")
-let questionText = document.getElementById("question-text")
+let questionNumberDiv 
+let questionText
 
-let optionOneBtn = document.getElementById("option-one")
-let optionOneLabel = document.getElementById("option-one-label")
+let optionOneBtn
+let optionOneLabel
 
-let optionTwoBtn = document.getElementById("option-two")
-let optionTwoLabel = document.getElementById("option-two-label")
+let optionTwoBtn
+let optionTwoLabel
 
-let optionThreeBtn = document.getElementById("option-three")
-let optionThreeLabel = document.getElementById("option-three-label")
+let optionThreeBtn
+let optionThreeLabel
 
-let optionFourBtn = document.getElementById("option-four")
-let optionFourLabel = document.getElementById("option-four-label")
+let optionFourBtn
+let optionFourLabel
 
 loadQuizBtn.addEventListener("click", async () => {
   const tutorName = tutorNameInput.value.toLowerCase()
@@ -131,6 +132,9 @@ function updatePallete() {
       loadQuestion( button )
     })
 
+    //each iteration creates one element in the 
+    //array representing the answer to each question
+    quizResponse.push( 0 )
     questionsListDiv.appendChild( button )
   }
 
@@ -174,9 +178,64 @@ function loadQuestion( clickedBtn ) {
   optionTwoLabel.textContent = question[2]
   optionThreeLabel.textContent = question[3]
   optionFourLabel.textContent = question[4]
+
+  saveAnswer( currentQuestion )
+  updateCheckbox( questionNumber )
+  currentQuestion = questionNumber
 }
 
+function saveAnswer( currentQuestion ) {
+  let chosenAnswer 
 
+  if( optionOneBtn.checked ) {
+    chosenAnswer = 1
+  } else if ( optionTwoBtn.checked ) {
+    chosenAnswer = 2
+  } else if ( optionThreeBtn.checked ) {
+    chosenAnswer = 3
+  } else if ( optionFourBtn.checked ) {
+    chosenAnswer = 4
+  } else {
+    chosenAnswer = 0
+  }
+
+  quizResponse[ currentQuestion - 1 ] = chosenAnswer
+}
+
+function updateCheckbox( nextQuestionNumber ) {
+  switch( quizResponse[ nextQuestionNumber - 1] ) {
+    case 0:
+      optionOneBtn.checked = false
+      optionTwoBtn.checked = false
+      optionThreeBtn.checked = false
+      optionFourBtn.checked = false
+      break
+    case 1:
+      optionOneBtn.checked = true
+      optionTwoBtn.checked = false
+      optionThreeBtn.checked = false
+      optionFourBtn.checked = false
+      break
+    case 2:
+      optionOneBtn.checked = false
+      optionTwoBtn.checked = true
+      optionThreeBtn.checked = false
+      optionFourBtn.checked = false
+      break
+    case 3:
+      optionOneBtn.checked = false
+      optionTwoBtn.checked = false
+      optionThreeBtn.checked = true
+      optionFourBtn.checked = false
+      break
+    case 4:
+      optionOneBtn.checked = false
+      optionTwoBtn.checked = false
+      optionThreeBtn.checked = false
+      optionFourBtn.checked = true
+      break
+  }
+}
 
 
 
