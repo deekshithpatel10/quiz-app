@@ -252,7 +252,7 @@ body {
    height: 40px;
    width: 40px;
    border-radius: 5px;
-   background-color: rgb(118, 226, 118);
+   background-color: rgb(228, 228, 129);
    border: 1px solid black;
    cursor: pointer;
 }
@@ -262,7 +262,7 @@ body {
 }
 
 #selected-question {
-   background-color: green;
+   background-color: yellow;
 }
 
 .question-list-container {
@@ -319,4 +319,6 @@ body {
    font-weight: bold;
    font-family: Roboto, sans-serif;
 }
+
+
 
