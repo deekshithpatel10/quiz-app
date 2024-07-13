@@ -68,20 +68,20 @@ const content = `<div class="question-para">
   <label for="option-four" id="option-four-label"></label>
 </div>`
 
-const questionNumberDiv = document.getElementById("question-number")
-const questionText = document.getElementById("question-text")
+let questionNumberDiv = document.getElementById("question-number")
+let questionText = document.getElementById("question-text")
 
-const optionOneBtn = document.getElementById("option-one")
-const optionOneLabel = document.getElementById("option-one-label")
+let optionOneBtn = document.getElementById("option-one")
+let optionOneLabel = document.getElementById("option-one-label")
 
-const optionTwoBtn = document.getElementById("option-two")
-const optionTwoLabel = document.getElementById("option-two-label")
+let optionTwoBtn = document.getElementById("option-two")
+let optionTwoLabel = document.getElementById("option-two-label")
 
-const optionThreeBtn = document.getElementById("option-three")
-const optionThreeLabel = document.getElementById("option-three-label")
+let optionThreeBtn = document.getElementById("option-three")
+let optionThreeLabel = document.getElementById("option-three-label")
 
-const optionFourBtn = document.getElementById("option-four")
-const optionFourLabel = document.getElementById("option-four-label")
+let optionFourBtn = document.getElementById("option-four")
+let optionFourLabel = document.getElementById("option-four-label")
 
 loadQuizBtn.addEventListener("click", async () => {
   const tutorName = tutorNameInput.value.toLowerCase()
@@ -139,6 +139,21 @@ function updatePallete() {
 
 function updateQuizDetailsDiv() {
   quizDetailsDiv.innerHTML = content
+
+  questionNumberDiv = document.getElementById("question-number")
+  questionText = document.getElementById("question-text")
+
+  optionOneBtn = document.getElementById("option-one")
+  optionOneLabel = document.getElementById("option-one-label")
+
+  optionTwoBtn = document.getElementById("option-two")
+  optionTwoLabel = document.getElementById("option-two-label")
+
+  optionThreeBtn = document.getElementById("option-three")
+  optionThreeLabel = document.getElementById("option-three-label")
+
+  optionFourBtn = document.getElementById("option-four")
+  optionFourLabel = document.getElementById("option-four-label")
 
   loadQuestion( allQuestionButtons[0] )
 }
