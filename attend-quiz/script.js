@@ -84,6 +84,8 @@ let optionThreeLabel
 let optionFourBtn
 let optionFourLabel
 
+const optionsArray = [optionOneBtn, optionTwoBtn, optionThreeBtn, optionFourBtn]
+
 loadQuizBtn.addEventListener("click", async () => {
   const tutorName = tutorNameInput.value.toLowerCase()
   const quizName = quizNameInput.value.toLowerCase()
@@ -116,6 +118,7 @@ function loadQuiz() {
   clearQuizDetailsDiv()
   updatePallete()
   updateQuizDetailsDiv()
+  initializeOptionsArray()
 }
 
 function clearQuizDetailsDiv() {
@@ -206,6 +209,25 @@ function saveAnswer( currentQuestion ) {
   } else {
     allQuestionButtons[ currentQuestion - 1 ].classList.remove("answer-chosen")
   }
+}
+
+function initializeOptionsArray() {
+  optionsArray.forEach( ( optionButton ) => {
+    optionButton.addEventListener("change", () => {
+      let checked = false
+      if( optionButton.checked ) {
+        checked = true
+      }
+
+      optionsArray.forEach( ( optionButtonInner ) => {
+        optionButtonInner.checked = false
+      })
+
+      if( !checked ) {
+        optionButton.checked = true
+      }
+    })
+  })
 }
 
 

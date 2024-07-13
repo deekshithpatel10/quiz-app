@@ -320,8 +320,10 @@ body {
 }
 
 .question-list-container .questions-list .answer-chosen {
-   background-color: green;
+   background-color: lightgreen;
 }
 
-
+#selected-answered-question {
+   background-color: green;
+}
 
