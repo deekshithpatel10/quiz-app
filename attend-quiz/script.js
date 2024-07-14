@@ -47,6 +47,7 @@ const submitQuizBtn = document.querySelector(".submit-quiz-btn")
 const quizDetailsDiv = document.querySelector(".quiz-details")
 const questionsListDiv = document.querySelector(".questions-list")
 const questionBtnsDiv = document.querySelector(".question-buttons")
+const questionPallete = document.querySelector(".question-pallete")
 
 //div content to be inserted to load quiz
 const content = `<div class="question-para">
@@ -148,6 +149,8 @@ function updatePallete() {
   }
 
   allQuestionButtons = questionsListDiv.children
+
+  questionPallete.textContent = `${quizName}`
 }
 
 function updateQuizDetailsDiv() {
