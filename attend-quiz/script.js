@@ -42,6 +42,7 @@ const loadQuizBtn = document.querySelector(".load-quiz-btn")
 
 const quizDetailsDiv = document.querySelector(".quiz-details")
 const questionsListDiv = document.querySelector(".questions-list")
+const questionBtnsDiv = document.querySelector("question-buttons")
 
 //div content to be inserted to load quiz
 const content = `<div class="question-para">
@@ -84,7 +85,7 @@ let optionThreeLabel
 let optionFourBtn
 let optionFourLabel
 
-const optionsArray = [optionOneBtn, optionTwoBtn, optionThreeBtn, optionFourBtn]
+let optionsArray
 
 loadQuizBtn.addEventListener("click", async () => {
   const tutorName = tutorNameInput.value.toLowerCase()
@@ -147,30 +148,16 @@ function updatePallete() {
 function updateQuizDetailsDiv() {
   quizDetailsDiv.innerHTML = content
 
-  questionNumberDiv = document.getElementById("question-number")
-  questionText = document.getElementById("question-text")
-
-  optionOneBtn = document.getElementById("option-one")
-  optionOneLabel = document.getElementById("option-one-label")
-
-  optionTwoBtn = document.getElementById("option-two")
-  optionTwoLabel = document.getElementById("option-two-label")
-
-  optionThreeBtn = document.getElementById("option-three")
-  optionThreeLabel = document.getElementById("option-three-label")
-
-  optionFourBtn = document.getElementById("option-four")
-  optionFourLabel = document.getElementById("option-four-label")
-
-  loadQuestion( allQuestionButtons[0] )
+  updateButtonVariables()
+  addNavigationBtns()
+  const firstBtn = allQuestionButtons[0]
+  loadQuestion( firstBtn )
 }
 
 function loadQuestion( clickedBtn ) {
   const questionNumber = Number( clickedBtn.textContent )
 
-  for( let button of allQuestionButtons ) {
-    button.removeAttribute("id")
-  }
+  allQuestionButtons[ currentQuestion - 1 ].removeAttribute("id")
   clickedBtn.id = "selected-question"
 
   const question = quizDoc[ questionNumber - 1 ][1]
@@ -182,12 +169,30 @@ function loadQuestion( clickedBtn ) {
   optionThreeLabel.textContent = question[3]
   optionFourLabel.textContent = question[4]
 
-  saveAnswer( currentQuestion )
   updateCheckbox( questionNumber )
   currentQuestion = questionNumber
 }
 
-function saveAnswer( currentQuestion ) {
+function initializeOptionsArray() {
+  optionsArray = [optionOneBtn, optionTwoBtn, optionThreeBtn, optionFourBtn]
+
+  optionsArray.forEach( ( optionButton ) => {
+    optionButton.addEventListener("change", () => {
+      let checked = optionButton.checked
+
+      optionsArray.forEach( ( optionButtonInner ) => {
+        optionButtonInner.checked = false
+      })
+
+      optionButton.checked = (!checked)
+
+      saveAnswer()
+      addClass()
+    })
+  })
+}
+
+function saveAnswer() {
   let chosenAnswer 
 
   if( optionOneBtn.checked ) {
@@ -203,31 +208,83 @@ function saveAnswer( currentQuestion ) {
   }
 
   quizResponse[ currentQuestion - 1 ] = chosenAnswer
+}
+
+function addClass() {
+  const questionBtn = allQuestionButtons[ currentQuestion - 1 ]
+  const chosenAnswer = quizResponse[ currentQuestion - 1 ]
 
   if( chosenAnswer ) {
-    allQuestionButtons[ currentQuestion - 1 ].classList.add("answer-chosen")
+    questionBtn.classList.add("answer-chosen")
   } else {
-    allQuestionButtons[ currentQuestion - 1 ].classList.remove("answer-chosen")
+    questionBtn.classList.remove("answer-chosen")
   }
 }
 
-function initializeOptionsArray() {
-  optionsArray.forEach( ( optionButton ) => {
-    optionButton.addEventListener("change", () => {
-      let checked = false
-      if( optionButton.checked ) {
-        checked = true
-      }
+function updateButtonVariables() {
+  questionNumberDiv = document.getElementById("question-number")
+  questionText = document.getElementById("question-text")
 
-      optionsArray.forEach( ( optionButtonInner ) => {
-        optionButtonInner.checked = false
-      })
+  optionOneBtn = document.getElementById("option-one")
+  optionOneLabel = document.getElementById("option-one-label")
 
-      if( !checked ) {
-        optionButton.checked = true
-      }
-    })
+  optionTwoBtn = document.getElementById("option-two")
+  optionTwoLabel = document.getElementById("option-two-label")
+
+  optionThreeBtn = document.getElementById("option-three")
+  optionThreeLabel = document.getElementById("option-three-label")
+
+  optionFourBtn = document.getElementById("option-four")
+  optionFourLabel = document.getElementById("option-four-label")
+
+}
+
+function addNavigationBtns() {
+  questionBtnsDiv.removeChild( loadQuizBtn )
+
+  const nextButton = createNextBtn()
+  const previousButton = createPreviousBtn()
+
+  questionBtnsDiv.appendChild( previousButton )
+  questionBtnsDiv.appendChild( nextButton )
+}
+
+function createNextBtn() {
+  const nextButton = document.createElement("button")
+  nextButton.classList.add("next-btn")
+
+  nextButton.addEventListener("click", () => {
+    let nextQuestionNumber 
+    if( currentQuestion == quizResponse.length ) {
+      nextQuestionNumber = 1
+    } else {
+      nextQuestionNumber = currentQuestion + 1
+    }
+
+    const nextQuestionBtn = allQuestionButtons[ nextQuestionNumber - 1 ]
+    loadQuestion( nextQuestionBtn )
   })
+
+  return nextButton
+}
+
+function createPreviousBtn() {
+  const previousButton = document.createElement("button")
+  previousButton.classList.add("previous-btn")
+
+  previousButton.addEventListener("click", () => {
+    let previousQuestionNumber 
+    if( currentQuestion == 1 ) {
+      previousQuestionNumber = quizResponse.length
+    } else {
+      previousQuestionNumber = currentQuestion - 1
+    }
+
+    const previousQuestionBtn = allQuestionButtons[ previousQuestionNumber - 1 ]
+    loadQuestion( previousQuestionBtn )
+  })
+
+  return previousButton
 }
 
 
@@ -246,8 +303,10 @@ function initializeOptionsArray() {
 
 
 
-function updateCheckbox( nextQuestionNumber ) {
-  switch( quizResponse[ nextQuestionNumber - 1] ) {
+function updateCheckbox( questionNumber ) {
+  const savedAnswer = quizResponse[ questionNumber - 1]
+
+  switch( savedAnswer ) {
     case 0:
       optionOneBtn.checked = false
       optionTwoBtn.checked = false
