@@ -259,6 +259,7 @@ function addNavigationBtns() {
 function createNextBtn() {
   const nextButton = document.createElement("button")
   nextButton.classList.add("next-btn")
+  nextButton.textContent = "Next"
 
   nextButton.addEventListener("click", () => {
     let nextQuestionNumber 
@@ -278,6 +279,7 @@ function createNextBtn() {
 function createPreviousBtn() {
   const previousButton = document.createElement("button")
   previousButton.classList.add("previous-btn")
+  previousButton.textContent = "Previous"
 
   previousButton.addEventListener("click", () => {
     let previousQuestionNumber 
