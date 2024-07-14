@@ -35,7 +35,9 @@ homeBtn.addEventListener("click", () => {
 let quizDoc
 let quizResponse = []
 let currentQuestion = 1
-let allQuestionButtons 
+let allQuestionButtons
+let tutorName
+let quizName
 const tutorNameInput = document.getElementById("tutor-name-input")
 const quizNameInput = document.getElementById("quiz-name-input")
 const loadQuizBtn = document.querySelector(".load-quiz-btn")
@@ -89,8 +91,8 @@ let optionFourLabel
 let optionsArray
 
 loadQuizBtn.addEventListener("click", async () => {
-  const tutorName = tutorNameInput.value.toLowerCase()
-  const quizName = quizNameInput.value.toLowerCase()
+  tutorName = tutorNameInput.value.toLowerCase()
+  quizName = quizNameInput.value.toLowerCase()
 
   if( tutorName && quizName ) {
 
@@ -317,24 +319,50 @@ function returnLastSelectedOptionId() {
   return OptionId
 }
 
-submitQuizBtn.addEventListener("click", () => {
+submitQuizBtn.addEventListener("click", async () => {
   console.log( quizResponse )
+  //if the quiz hasn't loaded, optionOneBtn is null
+  if( optionOneBtn ) {
+    const palleteMessageEl = document.querySelector(".pallete-msg")
+    const message = "*Nothing to submit."
+
+    showErrorMessage(message, palleteMessageEl)
+  } else {
+    const answer = confirm("Do you want to submit the quiz? You're result will be available in the results page.")
+
+    if( answer ) {
+      const result = evaluateQuiz()
+
+      let studentResponse = {
+        tutor: tutorName,
+        student: userName,
+        score: `${result}/${quizResponse.length}`
+      }
+
+      await setDoc( doc(db, "responses", `${quizName}`), studentResponse)
+      quizNameInput.value = ""
+      tutorNameInput.value = ""
+      window.open("../home-page/home.html", "_self")
+    }
+
+  }
 })
 
+function evaluateQuiz() {
+  let score = 0
 
+  for( let i = 0; i < quizResponse.length; i++ ) {
+    const userAnswer = quizResponse[i]
 
+    const correctAnswer = Number( quizDoc[i][1][5] )
 
+    if( correctAnswer == userAnswer ) {
+      score++
+    }
+  }
 
-
-
-
-
-
-
-
-
-
-
+  return score
+}
 
 function updateCheckbox( questionNumber ) {
   const savedAnswer = quizResponse[ questionNumber - 1]

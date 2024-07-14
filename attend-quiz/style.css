@@ -285,7 +285,7 @@ body {
 .next-btn, 
 .previous-btn {
    margin-bottom: 10px;
-   width: 30%;
+   width: 25%;
    overflow: hidden;
    height: 30px;
    font-family: "Margarine", sans-serif;
@@ -308,6 +308,6 @@ body {
 }
 
 .next-btn {
-   margin-left: 30%;
+   margin-left: 20%;
 }
 
