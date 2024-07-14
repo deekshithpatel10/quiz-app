@@ -42,7 +42,7 @@ const loadQuizBtn = document.querySelector(".load-quiz-btn")
 
 const quizDetailsDiv = document.querySelector(".quiz-details")
 const questionsListDiv = document.querySelector(".questions-list")
-const questionBtnsDiv = document.querySelector("question-buttons")
+const questionBtnsDiv = document.querySelector(".question-buttons")
 
 //div content to be inserted to load quiz
 const content = `<div class="question-para">
