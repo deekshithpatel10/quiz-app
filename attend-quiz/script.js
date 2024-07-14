@@ -38,6 +38,7 @@ let currentQuestion = 1
 let allQuestionButtons
 let tutorName
 let quizName
+let flagForSubmit = 1
 const tutorNameInput = document.getElementById("tutor-name-input")
 const quizNameInput = document.getElementById("quiz-name-input")
 const loadQuizBtn = document.querySelector(".load-quiz-btn")
@@ -103,6 +104,7 @@ loadQuizBtn.addEventListener("click", async () => {
       console.log("Document data:", quizSnap.data());
       quizDoc = Object.entries( quizSnap.data() )
       loadQuiz()
+      flagForSubmit = 0
 
     } else {
       const message = "*Quiz doesn't exist."
@@ -322,7 +324,7 @@ function returnLastSelectedOptionId() {
 submitQuizBtn.addEventListener("click", async () => {
   console.log( quizResponse )
   //if the quiz hasn't loaded, optionOneBtn is null
-  if( optionOneBtn ) {
+  if( flagForSubmit ) {
     const palleteMessageEl = document.querySelector(".pallete-msg")
     const message = "*Nothing to submit."
 
