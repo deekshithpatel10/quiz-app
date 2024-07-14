@@ -282,4 +282,32 @@ body {
    background-color: lightgreen;
 }
 
+.next-btn, 
+.previous-btn {
+   margin-bottom: 10px;
+   width: 30%;
+   overflow: hidden;
+   height: 30px;
+   font-family: "Margarine", sans-serif;
+   cursor: pointer;
+   border: 2px solid black;
+   border-radius: 5px;
+   font-weight: bold;
+   background-color: #e5e5e5;
+   transition: 0.2s all;
+}
+
+.next-btn:hover, 
+.previous-btn:hover {
+   box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+.next-btn:active,
+.previous-btn:active {
+   background-color: grey;
+}
+
+.next-btn {
+   margin-left: 30%;
+}
 
