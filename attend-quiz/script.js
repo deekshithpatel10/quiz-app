@@ -39,6 +39,7 @@ let allQuestionButtons
 const tutorNameInput = document.getElementById("tutor-name-input")
 const quizNameInput = document.getElementById("quiz-name-input")
 const loadQuizBtn = document.querySelector(".load-quiz-btn")
+const submitQuizBtn = document.querySelector(".submit-quiz-btn")
 
 const quizDetailsDiv = document.querySelector(".quiz-details")
 const questionsListDiv = document.querySelector(".questions-list")
@@ -178,13 +179,19 @@ function initializeOptionsArray() {
 
   optionsArray.forEach( ( optionButton ) => {
     optionButton.addEventListener("change", () => {
-      let checked = optionButton.checked
+      const lastSelectedOptionId = returnLastSelectedOptionId()
 
-      optionsArray.forEach( ( optionButtonInner ) => {
-        optionButtonInner.checked = false
-      })
+      if( lastSelectedOptionId == "none" ) {
+        optionButton.checked = true
+      } else if ( lastSelectedOptionId == optionButton.id ) {
+        optionButton.checked = false
+      } else {
+        optionsArray.forEach( ( optionButtonInner ) => {
+          optionButtonInner.checked = false
+        })
 
-      optionButton.checked = (!checked)
+        optionButton.checked = true
+      }
 
       saveAnswer()
       addClass()
@@ -287,6 +294,30 @@ function createPreviousBtn() {
   return previousButton
 }
 
+function returnLastSelectedOptionId() {
+  const selectedOption = quizResponse[ currentQuestion -  1 ]
+  let OptionId = "none"
+  switch( selectedOption ) {
+    case 1:
+      OptionId = "option-one"
+      break
+    case 2:
+      OptionId = "option-two"
+      break
+    case 3: 
+      OptionId = "option-three"
+      break
+    case 4:
+      OptionId = "option-four"
+      break
+  }
+
+  return OptionId
+}
+
+submitQuizBtn.addEventListener("click", () => {
+  console.log( quizResponse )
+})
 
 
 
