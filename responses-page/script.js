@@ -66,7 +66,7 @@ querySnapshot.forEach((doc) => {
   counter++
 })
 
-if( querySnapshot.length) {
+if( querySnapshot.size ) {
   tableEl.innerHTML = htmlTable
 } else {
   tableEl.innerHTML = "<p>Oops! You haven't received any responses yet.</p>"

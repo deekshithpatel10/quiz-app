@@ -72,3 +72,12 @@ body {
 
    overflow: auto;
 }
+
+table {
+   width: 80%;
+   text-align: center;
+}
+
+table p {
+   font-size: 20px;
+}

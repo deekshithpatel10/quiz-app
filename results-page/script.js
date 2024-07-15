@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.3/firebase-app.js'
-import { getFirestore, collection, query, where, getDoc, doc, setDoc } from 'https://www.gstatic.com/firebasejs/10.12.3/firebase-firestore.js'
+import { getFirestore, collection, query, where, getDocs, doc, setDoc } from 'https://www.gstatic.com/firebasejs/10.12.3/firebase-firestore.js'
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -37,3 +37,37 @@ homeBtn.addEventListener("click", () => {
 })
 
 //page logic begins here
+const tableEl = document.querySelector("table")
+
+const refToResponses = collection(db, "responses")
+const q = query(refToResponses, where("student", "==", `${userName}`))
+
+let htmlTable = `<tr>
+  <th>&nbsp;</th>
+  <th>Quiz Name</th>
+  <th>Tutor ID</th>
+  <th>Score</th>
+</tr>`
+
+const querySnapshot = await getDocs(q);
+let counter = 1
+querySnapshot.forEach((doc) => {
+  // doc.data() is never undefined for query doc snapshots
+  console.log(doc.id, " => ", doc.data());
+
+  const tutor = doc.data().tutor
+  const score = doc.data().score
+  const quiz = doc.data().quiz
+
+  const tableRow = `<tr><td>${counter}</td><td>${quiz}</td><td>${tutor}</td><td>${score}</td></tr>`
+
+  htmlTable += tableRow
+
+  counter++
+})
+
+if( querySnapshot.size ) {
+  tableEl.innerHTML = htmlTable
+} else {
+  tableEl.innerHTML = "<p>Oops! You haven't submitted any tests yet.</p>"
+}
