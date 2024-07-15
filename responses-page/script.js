@@ -67,8 +67,8 @@ querySnapshot.forEach((doc) => {
 })
 
 if( querySnapshot.length) {
-  tableEl.innerHTML = "Oops! You haven't received any responses yet."
-} else {
   tableEl.innerHTML = htmlTable
+} else {
+  tableEl.innerHTML = "Oops! You haven't received any responses yet."
 }
 
