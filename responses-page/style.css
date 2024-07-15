@@ -72,3 +72,7 @@ body {
 
    overflow: auto;
 }
+
+table {
+   width: 80%;
+}

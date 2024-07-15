@@ -37,12 +37,38 @@ homeBtn.addEventListener("click", () => {
 })
 
 //page logic begins here
-const refToResponses = collection(db, "responses")
+const tableEl = document.querySelector("table")
 
+const refToResponses = collection(db, "responses")
 const q = query(refToResponses, where("tutor", "==", `${userName}`))
 
+const htmlTable = `<tr>
+  <th>&nbsp;</th>
+  <th>Student ID</th>
+  <th>Quiz Name</th>
+  <th>Score</th>
+</tr>`
+
 const querySnapshot = await getDocs(q);
+let counter = 1
 querySnapshot.forEach((doc) => {
   // doc.data() is never undefined for query doc snapshots
   console.log(doc.id, " => ", doc.data());
-});
+
+  const student = doc.data().student
+  const score = doc.data().score
+  const quiz = doc.data().quiz
+
+  const tableRow = `<tr><td>${counter}</td><td>${student}</td><td>${quiz}</td><td>${score}</td></tr>`
+
+  htmlTable += tableRow
+
+  counter++
+})
+
+if( querySnapshot.length) {
+  tableEl.innerHTML = "Oops! You haven't received any responses yet."
+} else {
+  tableEl.innerHTML = htmlTable
+}
+

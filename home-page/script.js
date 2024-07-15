@@ -1,7 +1,7 @@
 const logOutBtn = document.querySelector(".logOut-btn")
 const IDelement = document.querySelector(".ID-el span")
 
-const userName = JSON.parse( sessionStorage.getItem("ID") )
+let userName = JSON.parse( sessionStorage.getItem("ID") )
 
 if ( !userName ) {
    window.open("../index.html", "_self")
