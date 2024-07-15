@@ -76,8 +76,30 @@ body {
 table {
    width: 80%;
    text-align: center;
+   margin: 10px auto;
+   background-color: white;
+   opacity: 0.9;
+   border-top: 2px solid black;
+   border-bottom: 2px solid black;
+   border-collapse: collapse;
 }
 
 table p {
    font-size: 20px;
+   font-family: "Margarine", sans-serif;
 }
+
+th {
+   font-family: "Margarine", sans-serif;
+   font-weight: bold;
+   font-size: 20px;
+   padding: 10px;
+}
+
+td {
+   font-family: Roboto, sans-serif;
+   font-size: 17px; 
+   border-top: 1px solid black;
+   padding: 5px;
+}
+
