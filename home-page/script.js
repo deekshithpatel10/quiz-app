@@ -2,6 +2,11 @@ const logOutBtn = document.querySelector(".logOut-btn")
 const IDelement = document.querySelector(".ID-el span")
 
 const userName = JSON.parse( sessionStorage.getItem("ID") )
+
+if ( !userName ) {
+   window.open("../index.html", "_self")
+}
+
 IDelement.textContent += userName
 
 logOutBtn.addEventListener("click", () => {
@@ -24,9 +29,9 @@ createQuizDiv.addEventListener("click", () => {
 })
 
 responsesDiv.addEventListener("click", () => {
-   console.log("see responses")
+   window.open("../responses-page/responses.html", "_self")
 })
 
 resultsDiv.addEventListener("click", () => {
-   console.log("check results")
+   window.open("../results-page/results.html", "_self")
 })

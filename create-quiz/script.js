@@ -25,6 +25,11 @@ const homeBtn = document.querySelector(".home-btn")
 const IDelement = document.querySelector(".ID-el span")
 
 const userName = JSON.parse( sessionStorage.getItem("ID") )
+
+if ( !userName ) {
+   window.open("../index.html", "_self")
+}
+
 IDelement.textContent += userName
 
 homeBtn.addEventListener("click", () => {
