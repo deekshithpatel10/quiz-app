@@ -102,7 +102,6 @@ loadQuizBtn.addEventListener("click", async () => {
     const quizSnap = await getDoc( quizRef );
 
     if ( quizSnap.exists() ) {
-      console.log("Document data:", quizSnap.data());
       quizDoc = Object.entries( quizSnap.data() )
       loadQuiz()
       flagForSubmit = 0
@@ -325,7 +324,6 @@ function returnLastSelectedOptionId() {
 }
 
 submitQuizBtn.addEventListener("click", async () => {
-  console.log( quizResponse )
   //if the quiz hasn't loaded, optionOneBtn is null
   if( flagForSubmit ) {
     const palleteMessageEl = document.querySelector(".pallete-msg")
@@ -341,10 +339,11 @@ submitQuizBtn.addEventListener("click", async () => {
       let studentResponse = {
         tutor: tutorName,
         student: userName,
+        quiz: quizName,
         score: `${result}/${quizResponse.length}`
       }
 
-      await setDoc( doc(db, "responses", `${quizName}`), studentResponse)
+      await setDoc( doc(db, "responses", `${quizName}_${tutorName}_${userName}`), studentResponse)
       quizNameInput.value = ""
       tutorNameInput.value = ""
       window.open("../home-page/home.html", "_self")

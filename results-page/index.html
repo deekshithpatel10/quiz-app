@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Check Results | Quizzer</title>
+   <link rel="icon" href="../images/letter-q.png" type="image/icon type">
+   <link rel="stylesheet" href="style.css">
+   <script src="script.js" type="module" defer></script>
+
+   <!-- importing fonts-->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Margarine&family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <link href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap" rel="stylesheet">
+</head>
+<body>
+   <script>
+      const ID = JSON.parse(sessionStorage.getItem("ID"))
+
+      if ( !ID ) {
+         window.open("../index.html", "_self")
+      }
+   </script>
+
+   <div class="header">
+      <span class="title">Quizzer</span>
+      <div class="header-right">
+         <span class="ID-el">ID : <span></span></span>
+         <button class="home-btn">Home</button>
+      </div>
+   </div>
+
+   <div class="main">
+      
+   </div>
+</body>
