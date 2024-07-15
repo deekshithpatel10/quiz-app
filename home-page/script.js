@@ -11,7 +11,7 @@ IDelement.textContent += userName
 
 logOutBtn.addEventListener("click", () => {
    sessionStorage.clear()
-
+   userName = ""
    window.open("../index.html", "_self")
 })
 
