@@ -42,7 +42,7 @@ const tableEl = document.querySelector("table")
 const refToResponses = collection(db, "responses")
 const q = query(refToResponses, where("tutor", "==", `${userName}`))
 
-const htmlTable = `<tr>
+let htmlTable = `<tr>
   <th>&nbsp;</th>
   <th>Student ID</th>
   <th>Quiz Name</th>
@@ -69,6 +69,6 @@ querySnapshot.forEach((doc) => {
 if( querySnapshot.length) {
   tableEl.innerHTML = htmlTable
 } else {
-  tableEl.innerHTML = "Oops! You haven't received any responses yet."
+  tableEl.innerHTML = "<p>Oops! You haven't received any responses yet.</p>"
 }
 
